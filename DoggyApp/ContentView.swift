@@ -23,8 +23,9 @@ struct ContentView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 //.scaledToFit()
-                .cornerRadius(50)
-                .frame(width: 300, height: 420)
+                .cornerRadius(40)
+                .frame(width: 275, height: 400)
+                .padding(5)
             
             Text("Pick a Dog")
                 .font(.system(size: 30, weight: .heavy, design: .default))
@@ -65,7 +66,7 @@ struct ContentView: View {
                 .fill(blueGradient))
             
             Text("Plans")
-                .font(.system(size: 20, weight: .semibold, design: .rounded))                
+                .font(.system(size: 20, weight: .semibold, design: .rounded))
             
             HStack {
                 
