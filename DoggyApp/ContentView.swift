@@ -21,12 +21,13 @@ struct ContentView: View {
             
             Image("doggy")
                 .resizable()
-                .scaledToFit()
-                .cornerRadius(20)
-                .frame(width: 300, height: 300)
+                .aspectRatio(contentMode: .fill)
+                //.scaledToFit()
+                .cornerRadius(50)
+                .frame(width: 300, height: 420)
             
             Text("Pick a Dog")
-                .font(.system(size: 30, weight: .bold, design: .monospaced))
+                .font(.system(size: 30, weight: .heavy, design: .default))
             Text("Archi is clever")
                 .font(.system(size: 15, weight: .semibold, design: .rounded))
                 .foregroundColor(.secondary)
@@ -35,7 +36,7 @@ struct ContentView: View {
                 Button {
                     //action
                 } label: {
-                    Text("Nice and ")
+                    Text("Nice and beautiful")
                         .font(.system(size: 20, weight: .semibold, design: .rounded))
                         .padding()
                         .foregroundColor(.white)
@@ -64,16 +65,17 @@ struct ContentView: View {
                 .fill(blueGradient))
             
             Text("Plans")
-                .font(.system(size: 20, weight: .semibold, design: .rounded))
+                .font(.system(size: 20, weight: .semibold, design: .rounded))                
             
             HStack {
                 
-                TitleView(description: "Partial Responsibility", systemIcon: "heart.slash", period: "Monthly", cost: "200 $")
+                TitleView(description: "Partial Responsibility", systemIcon: "heart.slash", period: "Monthly", cost: "200 $/mil")
                 
-                TitleView(description: "Full Responsibility", systemIcon: "heart", period: "Yearly", cost: "100 $")
+                TitleView(description: "Full Responsibility", systemIcon: "heart", period: "Yearly", cost: "100 $/mil")
             }
             
         }
+        .frame(maxHeight: .infinity)
         .padding()
         .background(Color("bg").opacity(0.6))
     }
@@ -94,7 +96,7 @@ struct TitleView: View {
     
     var body: some View {
         
-        VStack {
+        VStack(spacing: 0) {
             VStack {
                 Text(description)
                     .font(.system(size: 15, weight: .semibold, design: .rounded))
@@ -106,7 +108,7 @@ struct TitleView: View {
                             .fill(blueGradient))
                         .offset(.init(width: -10, height: 0))
                     Text(period)
-                        .font(.system(size: 15, weight: .semibold, design: .rounded))
+                        .font(.system(size: 20, weight: .semibold, design: .rounded))
                     
                     Spacer()
                 }
@@ -119,11 +121,13 @@ struct TitleView: View {
                 //action
             } label: {
                 Text(cost)
+                    .foregroundColor(.white)
                     .padding()
-                
+                    .frame(maxWidth: .infinity)
+                    .background(Capsule()
+                        .fill(blueGradient))
             }
-            .background(Circle()
-                .fill(blueGradient))
+           
         }
         .frame(maxWidth: .infinity)
     }
