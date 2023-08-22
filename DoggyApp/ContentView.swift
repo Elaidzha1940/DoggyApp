@@ -20,12 +20,24 @@ struct ContentView: View {
                 .resizable()
                 .scaledToFit()
                 .cornerRadius(20)
-                .frame(width: 400, height: 500)
-                .padding()
+                .frame(width: 300, height: 300)
             
             Text("Hire a Dog")
-                .f
+                .font(.system(size: 30, weight: .bold, design: .monospaced))
+            Text("Archi is clever")
+                .font(.system(size: 15, weight: .semibold, design: .rounded))
+                .foregroundColor(.secondary)
+            
+            Button {
+                //action
+            } label: {
+                <#code#>
+            }
+
+
         }
+        .padding()
+        .background(Color.secondary)
     }
 }
 
