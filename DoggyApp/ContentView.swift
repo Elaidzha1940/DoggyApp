@@ -32,12 +32,15 @@ struct ContentView: View {
                 Button {
                     //action
                 } label: {
-                    Text("Nice")
-                        .background(Color.black)
+                    Text("Nice and ")
+                        .font(.system(size: 25, weight: .semibold, design: .rounded))
+                        .padding()
                 }
                 .background(Capsule()
-                .fill(Gradient(colors: [Color("bgb"), Color("bgbone")])))
+                    .fill(LinearGradient(colors: [Color("bgb"), Color("bgbone")], startPoint: .trailing, endPoint: .leading)))
+                Spacer()
             }
+            .padding()
         }
         .padding()
         .background(Color("bg"))
