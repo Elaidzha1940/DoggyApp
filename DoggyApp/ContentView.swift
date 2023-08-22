@@ -11,11 +11,14 @@
 
 import SwiftUI
 
+let blueGradient = LinearGradient(colors: [Color("line"), Color("lineone")], startPoint: .trailing, endPoint: .leading)
+
 struct ContentView: View {
+    
     var body: some View {
         
         VStack {
-           
+            
             Image("doggy")
                 .resizable()
                 .scaledToFit()
@@ -58,21 +61,21 @@ struct ContentView: View {
                 .padding()
             }
             .background(Capsule()
-                .fill(LinearGradient(colors: [Color("line"), Color("lineone")], startPoint: .trailing, endPoint: .leading)))
+                .fill(blueGradient))
             
             Text("Plans")
                 .font(.system(size: 20, weight: .semibold, design: .rounded))
             
             HStack {
                 
-                TitleView(description: "Partial Responsibility", systemIcon: "hear.slash", period: "Monthly")
+                TitleView(description: "Partial Responsibility", systemIcon: "heart.slash", period: "Monthly", cost: "200 $")
                 
-                TitleView(description: "Full Responsibility", systemIcon: "hear", period: "Yearly")
+                TitleView(description: "Full Responsibility", systemIcon: "heart", period: "Yearly", cost: "100 $")
             }
-
+            
         }
         .padding()
-        .background(Color("bg"))
+        .background(Color("bg").opacity(0.6))
     }
 }
 
@@ -84,18 +87,44 @@ struct ContentView_Previews: PreviewProvider {
 
 struct TitleView: View {
     
-    var description: String
-    var systemIcon: String
-    var period:  String
+    let description: String
+    let systemIcon: String
+    let period:  String
+    let cost: String
     
     var body: some View {
         
         VStack {
             VStack {
                 Text(description)
+                    .font(.system(size: 15, weight: .semibold, design: .rounded))
+                
+                HStack {
+                    Image(systemName: systemIcon)
+                        .padding()
+                        .background(Circle()
+                            .fill(blueGradient))
+                        .offset(.init(width: -10, height: 0))
+                    Text(period)
+                        .font(.system(size: 15, weight: .semibold, design: .rounded))
+                    
+                    Spacer()
+                }
             }
+            .padding()
             .background(RoundedRectangle(cornerRadius: 20)
-            .fill(Color.white))
+                .fill(Color.white))
+            
+            Button {
+                //action
+            } label: {
+                Text(cost)
+                    .padding()
+                
+            }
+            .background(Circle()
+                .fill(blueGradient))
         }
+        .frame(maxWidth: .infinity)
     }
 }
