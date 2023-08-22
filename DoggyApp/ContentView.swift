@@ -28,15 +28,16 @@ struct ContentView: View {
                 .font(.system(size: 15, weight: .semibold, design: .rounded))
                 .foregroundColor(.secondary)
             
-            Button {
-                //action
-            } label: {
-                Text("Nice")
-                    .background(Capsule()
-                    .fill(Gradient(colors: [.red])))
-                                
+            HStack {
+                Button {
+                    //action
+                } label: {
+                    Text("Nice")
+                        .background(Color.black)
+                }
+                .background(Capsule()
+                .fill(Gradient(colors: [Color("bgb"), Color("bgbone")])))
             }
-
         }
         .padding()
         .background(Color("bg"))
