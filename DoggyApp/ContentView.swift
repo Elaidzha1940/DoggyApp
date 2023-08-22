@@ -16,6 +16,15 @@ struct ContentView: View {
         
         VStack {
            
+            Image("doggy")
+                .resizable()
+                .scaledToFit()
+                .cornerRadius(20)
+                .frame(width: 400, height: 500)
+                .padding()
+            
+            Text("Hire a Dog")
+                .f
         }
     }
 }
