@@ -62,6 +62,13 @@ struct ContentView: View {
             
             Text("Plans")
                 .font(.system(size: 20, weight: .semibold, design: .rounded))
+            
+            HStack {
+                
+                TitleView(description: "Partial Responsibility", systemIcon: "hear.slash", period: "Monthly")
+                
+                TitleView(description: "Full Responsibility", systemIcon: "hear", period: "Yearly")
+            }
 
         }
         .padding()
@@ -84,7 +91,11 @@ struct TitleView: View {
     var body: some View {
         
         VStack {
-            
+            VStack {
+                Text(description)
+            }
+            .background(RoundedRectangle(cornerRadius: 20)
+            .fill(Color.white))
         }
     }
 }
