@@ -31,13 +31,15 @@ struct ContentView: View {
             Button {
                 //action
             } label: {
-                <#code#>
+                Text("Nice")
+                    .background(Capsule()
+                    .fill(Gradient(colors: [.red])))
+                                
             }
-
 
         }
         .padding()
-        .background(Color.secondary)
+        .background(Color("bg"))
     }
 }
 
