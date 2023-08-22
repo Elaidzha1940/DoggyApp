@@ -41,6 +41,7 @@ struct ContentView: View {
                     .fill(LinearGradient(colors: [Color("bgb"), Color("bgbone")], startPoint: .trailing, endPoint: .leading)))
                 Spacer()
             }
+            .padding(.vertical)
             
             Button {
                 //action
@@ -58,6 +59,9 @@ struct ContentView: View {
             }
             .background(Capsule()
                 .fill(LinearGradient(colors: [Color("line"), Color("lineone")], startPoint: .trailing, endPoint: .leading)))
+            
+            Text("Plans")
+                .font(.system(size: 20, weight: .semibold, design: .rounded))
 
         }
         .padding()
@@ -68,5 +72,19 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct TitleView: View {
+    
+    var description: String
+    var systemIcon: String
+    var period:  String
+    
+    var body: some View {
+        
+        VStack {
+            
+        }
     }
 }
