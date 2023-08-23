@@ -50,8 +50,18 @@ struct CardVeiw: View {
         case -500...(-150):
             print("\(person) removed")
             offset = CGSize(width: -500, height: 0)
+        case 150...500:
+            print("\(person) added")
+            offset = CGSize(width: 500, height: 0)
         default:
             offset = .zero
+        }
+    }
+    
+    func changeImage(width: CGFloat) {
+        switch width {
+        case -500...(-130):
+            image = ("")
         }
     }
 }
