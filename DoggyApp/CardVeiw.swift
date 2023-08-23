@@ -35,10 +35,24 @@ struct CardVeiw: View {
         .rotationEffect(.degrees(Double(offset .width / 50)))
         .gesture(
         DragGesture()
-            .onChanged({ gesture in
+            .onChanged { gesture in
                 offset = gesture.translation
-            })
+            } .onEnded{ _ in
+                withAnimation {
+                    swipeCard(width: offset.width)
+                }
+            }
         )
+    }
+    
+    func swipeCard(width: CGFloat) {
+        switch width {
+        case -500...(-150):
+            print("\(person) removed")
+            offset = CGSize(width: -500, height: 0)
+        default:
+            offset = .zero
+        }
     }
 }
 
