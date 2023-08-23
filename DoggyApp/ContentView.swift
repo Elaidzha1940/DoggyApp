@@ -14,15 +14,16 @@ import SwiftUI
 let blueGradient = LinearGradient(colors: [Color("line"), Color("lineone")], startPoint: .trailing, endPoint: .leading)
 
 struct ContentView: View {
-    private var images: [String] = ["image", "imageone", "imagetwo"].reversed()
+    
+    private var icon: [String] = ["image", "imageone", "imagetwo"]
     
     var body: some View {
         
         VStack {
             VStack {
                 ZStack {
-                    ForEach(images, id: \.self) { image in
-                        CardVeiw(images: image)
+                    ForEach(icon, id: \.self) { icon in
+                        CardVeiw(icon: icon)
                     }
                 }
             }
@@ -128,7 +129,7 @@ struct TitleView: View {
                     .background(Capsule()
                         .fill(blueGradient))
             }
-           
+            
         }
         .frame(maxWidth: .infinity)
     }

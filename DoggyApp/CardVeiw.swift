@@ -13,7 +13,7 @@ import SwiftUI
 
 struct CardVeiw: View {
     
-    var images: String
+    var icon: String
     @State private var offset = CGSize.zero
     @State private var color: Color = Color("bgbone")
     @State private var image: Image = Image("doggy")
@@ -22,42 +22,45 @@ struct CardVeiw: View {
         
         ZStack {
             
-            Image("doggy")
-                .resizable()
-                .cornerRadius(20)
+            Rectangle()
                 .frame(width: 290, height: 430)
                 .border(color, width: 9.0)
+            //.foregroundColor(.clear)
                 .cornerRadius(20)
             
             HStack {
-                Image(images)
+                Image(icon)
+                
+                
+                Image(systemName: "heart.fill")
+                    .foregroundColor(.red)
             }
         }
         .offset(x: offset.width, y: offset.height * 0.5)
         .rotationEffect(.degrees(Double(offset .width / 50)))
         .gesture(
-        DragGesture()
-            .onChanged { gesture in
-                offset = gesture.translation
-                withAnimation {
-                    changeImage(width: offset.width)
+            DragGesture()
+                .onChanged { gesture in
+                    offset = gesture.translation
+                    withAnimation {
+                        changeImage(width: offset.width)
+                    }
+                } .onEnded{ _ in
+                    withAnimation {
+                        swipeCard(width: offset.width)
+                        changeImage(width: offset.width)
+                    }
                 }
-            } .onEnded{ _ in
-                withAnimation {
-                    swipeCard(width: offset.width)
-                    changeImage(width: offset.width)
-                }
-            }
         )
     }
     
     func swipeCard(width: CGFloat) {
         switch width {
         case -500...(-150):
-            print("\(images) removed")
+            print("\(icon) removed")
             offset = CGSize(width: -500, height: 0)
         case 150...500:
-            print("\(images) added")
+            print("\(icon) added")
             offset = CGSize(width: 500, height: 0)
         default:
             offset = .zero
@@ -72,13 +75,13 @@ struct CardVeiw: View {
             image = Image("doggytwo")
         default:
             image = Image("doggy")
-
+            
         }
     }
 }
 
 struct CardVeiw_Previews: PreviewProvider {
     static var previews: some View {
-        CardVeiw(images: "image")
+        CardVeiw(icon: "icon")
     }
 }
