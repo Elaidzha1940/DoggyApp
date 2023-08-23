@@ -20,19 +20,20 @@ struct ContentView: View {
     var body: some View {
         
         VStack {
-            VStack {
+            VStack(spacing: 1) {
                 ZStack {
                     ForEach(icon, id: \.self) { icon in
                         CardVeiw(icon: icon)
                     }
                 }
-            }
+            .padding(.top, 10)
             
             Text("Pick a Dog")
                 .font(.system(size: 30, weight: .heavy, design: .default))
             Text("Archi is clever")
                 .font(.system(size: 15, weight: .semibold, design: .rounded))
                 .foregroundColor(.secondary)
+            }
             
             HStack {
                 Button {

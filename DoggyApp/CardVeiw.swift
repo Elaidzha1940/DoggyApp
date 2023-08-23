@@ -21,19 +21,20 @@ struct CardVeiw: View {
     var body: some View {
         
         ZStack {
-            
             Rectangle()
                 .frame(width: 290, height: 430)
-                .border(color, width: 9.0)
-            //.foregroundColor(.clear)
                 .cornerRadius(20)
+                .foregroundColor(.gray.opacity(0.6))
+                .cornerRadius(10)
             
             HStack {
-                Image(icon)
-                
-                
-                Image(systemName: "heart.fill")
-                    .foregroundColor(.red)
+                Image("doggyone")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .cornerRadius(10)
+                    .frame(width: 280, height: 400)
+
+               
             }
         }
         .offset(x: offset.width, y: offset.height * 0.5)
