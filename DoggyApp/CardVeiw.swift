@@ -12,9 +12,11 @@
 import SwiftUI
 
 struct CardVeiw: View {
-    var person: String
+    
+    var images: String
     @State private var offset = CGSize.zero
     @State private var color: Color = Color("bgbone")
+    @State private var image: Image = Image("doggy")
     
     var body: some View {
         
@@ -28,7 +30,7 @@ struct CardVeiw: View {
                 .cornerRadius(20)
             
             HStack {
-
+                Image(images)
             }
         }
         .offset(x: offset.width, y: offset.height * 0.5)
@@ -37,9 +39,13 @@ struct CardVeiw: View {
         DragGesture()
             .onChanged { gesture in
                 offset = gesture.translation
+                withAnimation {
+                    changeImage(width: offset.width)
+                }
             } .onEnded{ _ in
                 withAnimation {
                     swipeCard(width: offset.width)
+                    changeImage(width: offset.width)
                 }
             }
         )
@@ -48,10 +54,10 @@ struct CardVeiw: View {
     func swipeCard(width: CGFloat) {
         switch width {
         case -500...(-150):
-            print("\(person) removed")
+            print("\(images) removed")
             offset = CGSize(width: -500, height: 0)
         case 150...500:
-            print("\(person) added")
+            print("\(images) added")
             offset = CGSize(width: 500, height: 0)
         default:
             offset = .zero
@@ -61,13 +67,18 @@ struct CardVeiw: View {
     func changeImage(width: CGFloat) {
         switch width {
         case -500...(-130):
-            image = ("")
+            image = Image("doggyone")
+        case 130...500:
+            image = Image("doggytwo")
+        default:
+            image = Image("doggy")
+
         }
     }
 }
 
 struct CardVeiw_Previews: PreviewProvider {
     static var previews: some View {
-        CardVeiw(person: "image")
+        CardVeiw(images: "image")
     }
 }
