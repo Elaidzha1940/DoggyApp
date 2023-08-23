@@ -14,18 +14,25 @@ import SwiftUI
 let blueGradient = LinearGradient(colors: [Color("line"), Color("lineone")], startPoint: .trailing, endPoint: .leading)
 
 struct ContentView: View {
+    private var people: [String] = ["image", "image1", "image2", "image3", "image4"].reversed()
     
     var body: some View {
         
         VStack {
-            
-            Image("doggy")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                //.scaledToFit()
-                .cornerRadius(40)
-                .frame(width: 275, height: 400)
-                .padding(5)
+            VStack {
+                ZStack {
+                    ForEach(people, id: \.self) { person in
+                        CardVeiw(person: person)
+                    }
+                }
+            }
+//            Image("doggy")
+//                .resizable()
+//                .aspectRatio(contentMode: .fill)
+//                //.scaledToFit()
+//                .cornerRadius(40)
+//                .frame(width: 275, height: 400)
+//                .padding(5)
             
             Text("Pick a Dog")
                 .font(.system(size: 30, weight: .heavy, design: .default))

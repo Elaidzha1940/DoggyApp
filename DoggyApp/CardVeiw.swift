@@ -12,13 +12,19 @@
 import SwiftUI
 
 struct CardVeiw: View {
+    var person: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        VStack {
+            
+            
+        }
     }
 }
 
 struct CardVeiw_Previews: PreviewProvider {
     static var previews: some View {
-        CardVeiw()
+        CardVeiw(person: "image")
     }
 }
